@@ -149,3 +149,4 @@
 2. A game that uses gestures as the input. Xbox Kinect did a dance game. Rhythm games?
 3. Arm Fatigue was an issue with long-term touchscreen use on Vertical screens. Consider having cameras placed elsewhere and have the arm at rest if this is meant to be long-term use.
 4. Drivers uses gestures for safe interaction.
+5. Robots that respond to gestures, play against you in rock paper scissors, or checkers, etc.
