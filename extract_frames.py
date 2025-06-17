@@ -72,7 +72,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract frames from a video and generate labels.')
     parser.add_argument('--video', required=True, help='Path to input video file (e.g., input.mp4)')
     parser.add_argument('--output', required=True, help='Directory to save extracted frames and labels')
-    parser.add_argument('--label', required=True, help='Label to assign to all extracted frames (e.g., "wave")')
+    parser.add_argument('--label', required=False, help='Label to assign to all extracted frames (e.g., "wave")')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--every_frame', action='store_true',
                        help='If set, extract every frame from the video.')
@@ -80,6 +80,8 @@ if __name__ == '__main__':
                        help='Number of frames per second to extract (default: 1). Ignored if --every_frame is set.')
     args = parser.parse_args()
     count = extract_frames(args.video, args.output, args.every_frame, args.frame_rate)
-    print(f"Extracted {count} frames to {args.output}")
-    generate_labels(args.output, args.label)
-    print(f"Generated labels.csv in {args.output}")
+
+    if args.label:
+        generate_labels(args.output, args.label)
+        print(f"Extracted {count} frames to {args.output} with label '{args.label}'")
+        print(f"Generated labels.csv in {args.output}")
