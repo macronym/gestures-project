@@ -22,6 +22,12 @@ Example:
     python create_subsets.py -d ./hagrid/dataset/ -o ./hagrid/subset_dataset/ -n 150
 """
 
+"""
+TODO: Combine the verification script with this one. 
+TODO: Add flag to re-zip the subset
+TODO: Add flag to create a bbox subset.
+"""
+
 ANNOTATIONS_PATH = 'D:/Hagrid/annotations/'
 NUM_SAMPLES = 100
 MAIN_DATASET_PATH = None
