@@ -12,6 +12,9 @@ Date: 2025-08-04
 This script creates a randomly sampled subset of an image dataset.
 It was originally written for use on the HAGRID lightweight dataset.
 
+It assumes HaGRIDv2_dataset_512 and annotations/ are in the same directory,
+and that they have been downloaded from https://github.com/hukenovs/hagrid
+
 Note: If the dataset is a zip file, use the -x flag to ensure it's extracted first.
 
 CLI Usage:
