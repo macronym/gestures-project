@@ -20,7 +20,7 @@ Example:
     python create_subsets.py -d ./hagrid/dataset/ -o ./hagrid/subset_dataset/ -n 150
 """
 
-def extract_dataset(zip_path: str) -> None:
+def extract_dataset(zip_path: str) -> str:
     """
     Extracts the contents of a ZIP archive to the same directory.
 
@@ -37,6 +37,7 @@ def extract_dataset(zip_path: str) -> None:
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(os.path.dirname(zip_path))
     print(f"Unzipped dataset to {os.path.dirname(zip_path)}")
+    
 
 def create_subset_dataset(dataset_path: str, output_dir: str, num_samples: int = 150) -> None:
     """Create a subset of the dataset with a specified number of samples"""
@@ -54,7 +55,7 @@ def create_subset_dataset(dataset_path: str, output_dir: str, num_samples: int =
     enough_samples = True
     for gesture_dir in os.listdir(dataset_path):
         gesture_path = os.path.join(dataset_path, gesture_dir)
-        if not os.path.isdir(gesture_path):
+        if not os.path.isdir(gesture_path) or gesture_dir.startswith('.'):
             continue  # Skip files, only process directories
         gesture_samples = os.listdir(gesture_path)
         count = len(gesture_samples)
@@ -68,7 +69,7 @@ def create_subset_dataset(dataset_path: str, output_dir: str, num_samples: int =
     # Create the randomly sampled subset
     for gesture_dir in os.listdir(dataset_path):
         gesture_path = os.path.join(dataset_path, gesture_dir)
-        if not os.path.isdir(gesture_path):
+        if not os.path.isdir(gesture_path) or gesture_dir.startswith('.'):
             continue
         gesture_samples = os.listdir(gesture_path)
         selected_samples = random.sample(gesture_samples, num_samples)
